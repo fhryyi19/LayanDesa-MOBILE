@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    network_security_config.xml
+    Mengizinkan HTTP (cleartext) ke:
+      - 10.0.2.2      = PC host dari dalam emulator Android
+      - 192.168.1.4   = IP LAN PC (untuk device fisik di jaringan yang sama)
+      - localhost      = untuk testing di browser / USB debug (adb reverse)
+      - 127.0.0.1      = alias localhost
+    Semua domain lain tetap wajib HTTPS.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <!-- IP host PC dari dalam emulator Android -->
+        <domain includeSubdomains="false">10.0.2.2</domain>
+        <!-- IP LAN PC — untuk device fisik di jaringan WiFi yang sama -->
+        <domain includeSubdomains="false">192.168.1.4</domain>
+        <!-- Untuk testing via browser / USB debug (adb reverse) -->
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+    </domain-config>
+</network-security-config>

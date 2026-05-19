@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0B1F12" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LayanDesa" />
+  <meta name="description" content="Portal resmi pelayanan publik Desa Sukamaju — informasi, berita, pengumuman, dan layanan administrasi." />
+
+  <title>LayanDesa – Desa Sukamaju</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="./manifest.json" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="./css/app.css?v=2" />
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash-screen" aria-hidden="true">
+    <div class="splash-logo">
+      <div class="splash-icon" aria-hidden="true">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+      </div>
+      <div class="splash-brand">LayanDesa</div>
+      <div class="splash-sub">Desa Sukamaju</div>
+    </div>
+    <div class="splash-loader">
+      <div class="splash-bar"></div>
+    </div>
+  </div>
+
+  <!-- App Shell -->
+  <div id="app" style="display:none;" role="main">
+
+    <!-- Status Bar Spacer -->
+    <div class="status-bar-spacer"></div>
+
+    <!-- Top App Bar -->
+    <header class="app-bar" id="app-bar">
+      <div class="app-bar-inner">
+        <div class="app-bar-brand">
+          <span class="app-bar-logo" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>
+          </span>
+          <span class="app-bar-title">LayanDesa</span>
+        </div>
+        <div class="app-bar-actions">
+          <button class="icon-btn" id="btn-notif" aria-label="Notifikasi" title="Notifikasi">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main View (SPA Content) -->
+    <main id="app-view" class="app-view" role="region" aria-live="polite"></main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav" role="navigation" aria-label="Navigasi utama">
+      <button class="nav-tab active" data-page="home" onclick="Router.navigate('home')" aria-label="Beranda" id="nav-home">
+        <span class="nav-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/>
+          </svg>
+        </span>
+        <span class="nav-label">Beranda</span>
+        <span class="nav-indicator"></span>
+      </button>
+
+      <button class="nav-tab" data-page="profil" onclick="Router.navigate('profil')" aria-label="Profil" id="nav-profil">
+        <span class="nav-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+        </span>
+        <span class="nav-label">Profil</span>
+        <span class="nav-indicator"></span>
+      </button>
+
+      <button class="nav-tab" data-page="berita" onclick="Router.navigate('berita')" aria-label="Berita" id="nav-berita">
+        <span class="nav-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+            <path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/>
+          </svg>
+        </span>
+        <span class="nav-label">Berita</span>
+        <span class="nav-indicator"></span>
+      </button>
+
+      <button class="nav-tab" data-page="pengumuman" onclick="Router.navigate('pengumuman')" aria-label="Pengumuman" id="nav-pengumuman">
+        <span class="nav-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </span>
+        <span class="nav-label">Pengumuman</span>
+        <span class="nav-indicator"></span>
+      </button>
+
+      <button class="nav-tab" data-page="layanan" onclick="Router.navigate('layanan')" aria-label="Layanan" id="nav-layanan">
+        <span class="nav-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          </svg>
+        </span>
+        <span class="nav-label">Layanan</span>
+        <span class="nav-indicator"></span>
+      </button>
+
+      <button class="nav-tab" data-page="kontak" onclick="Router.navigate('kontak')" aria-label="Kontak" id="nav-kontak">
+        <span class="nav-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 10.23a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.5h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.1a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/>
+          </svg>
+        </span>
+        <span class="nav-label">Kontak</span>
+        <span class="nav-indicator"></span>
+      </button>
+    </nav>
+
+    <!-- Safe Area bottom spacer -->
+    <div class="safe-area-bottom"></div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts -->
+  <script src="./js/config.js?v=2"></script>
+  <script src="./js/api.js?v=2"></script>
+  <script src="./js/router.js?v=2"></script>
+  <script src="./js/components.js?v=2"></script>
+
+  <!-- Pages -->
+  <script src="./js/pages/home.js?v=2"></script>
+  <script src="./js/pages/berita.js?v=2"></script>
+  <script src="./js/pages/pengumuman.js?v=2"></script>
+  <script src="./js/pages/layanan.js?v=2"></script>
+  <script src="./js/pages/profil.js?v=2"></script>
+  <script src="./js/pages/kontak.js?v=2"></script>
+  <script src="./js/pages/login.js?v=2"></script>
+  <script src="./js/pages/register.js?v=2"></script>
+  <script src="./js/pages/keluhan.js?v=2"></script>
+  <script src="./js/pages/keluhan-detail.js?v=2"></script>
+
+  <!-- App Bootstrap -->
+  <script src="./js/app.js?v=2"></script>
+
+  <!-- Splash fade-out -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const splash = document.getElementById('splash-screen');
+      const app    = document.getElementById('app');
+      setTimeout(() => {
+        splash.classList.add('fade-out');
+        app.style.display = 'flex';
+        setTimeout(() => splash.remove(), 500);
+      }, 1400);
+    });
+  </script>
+</body>
+</html>

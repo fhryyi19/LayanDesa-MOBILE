@@ -1,0 +1,20 @@
+{
+  "appId": "com.desa.sukamaju.layandesa",
+  "appName": "LayanDesa",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "http",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0B1426",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    }
+  }
+}
